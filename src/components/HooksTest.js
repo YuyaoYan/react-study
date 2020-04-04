@@ -43,7 +43,7 @@ export default function HooksTest() {
   return (
     <div>
       <FruitAdd onAddFruit={(pname) => setFruits([pname, ...fruits])}></FruitAdd>
-      <p>{fruit === "" ? "please choose fruit." : "your choose is:" + `${fruit}`}</p>
+      <p>{fruit === "" ? "please choose fruit." : "your choose is:" + {fruit}}</p>
       <FruitList fruits={fruits} onSelectFruits={(f) => setFruit(f)}></FruitList>
     </div>
   );
