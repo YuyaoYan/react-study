@@ -1,5 +1,6 @@
 // 高阶组件
 import React from "react";
+
 function Lesson(props) {
   return (
     <div>
@@ -9,9 +10,9 @@ function Lesson(props) {
 }
 // 模拟数据
 const lessons = [
-  { stage: "React", title: "核心API" },
-  { stage: "React", title: "组件化1" },
-  { stage: "React", title: "组件化2" }
+  { stage: "React", title: "核心API*" },
+  { stage: "React", title: "组件化1**" },
+  { stage: "React", title: "组件化2***" },
 ];
 //Lesson是样式
 //withContent是逻辑  Comp是传入的组件  props是传入的参数
@@ -22,23 +23,38 @@ const withContent = (Comp) => (props) => {
 };
 const withLog = (Comp) => {
   return class extends React.Component {
-    componentDidMount(){
-      console.log(this,this.props)
+    componentDidMount() {
+      console.log(this, this.props);
     }
-    render(){
-      return <Comp {...this.props}/>
+    render() {
+      return <Comp {...this.props} />;
     }
   };
 };
 const LessonWithContent = withLog(withContent(Lesson));
 
+@withLog
+@withContent
+class Lesson2 extends React.Component {
+  render() {
+    return (
+      <div>
+        {this.props.stage} - {this.props.title}
+      </div>
+    );
+  }
+}
 export default function HocTest() {
   return (
     <div>
-      {[0, 0, 0].map((item, idx) => (
+      {/* {[0, 0, 0].map((item, idx) => (
         <LessonWithContent idx={idx} key={idx} />
+      ))} */}
+      {[0, 0, 0].map((item, idx) => (
+        <Lesson2 idx={idx} key={idx} />
       ))}
+        <Lesson2 idx={1} key={1} />
+
     </div>
   );
 }
-

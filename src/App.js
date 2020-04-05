@@ -2,16 +2,19 @@ import React from "react";
 // import { Clock, ClockFun } from "./components/StateMGt";
 // import EventHandle from "./components/EventHandle";
 // import ContextTest from "./components/ContextTest";
-// import HocTest from "./components/HocTest";
+import HocTest from "./components/HocTest";
 // import Composition from "./components/Composition";
 // import ContextTestUpGrade from "./components/ContextTest_upgrade";
 // import CompositionUpgrade from "./components/Composition_upgrade";
 // import HooksTest from "./components/HooksTest"
-import HooksTestUpgrade from "./components/HooksTest_upgrade"
-import FruitsText from './components/FruitsText'
-//挂载 Mock
-
+// import HooksTestUpgrade from "./components/HooksTest_upgrade"
+// import FruitsText from './components/FruitsText'
+import KformTest from "./components/KformTest";
+import YFormTest from './components/YFormTest'
+// import YYY from "./components/HocTest.decorator";
+import a from "./components/test";
 function App() {
+  let d = "8";
   return (
     <div className="App">
       {/* <Mock />
@@ -27,8 +30,13 @@ function App() {
       {/* <ContextTestUpGrade></ContextTestUpGrade> */}
       {/* <CompositionUpgrade></CompositionUpgrade> */}
       {/* <HooksTest></HooksTest> */}
-      <HooksTestUpgrade></HooksTestUpgrade>
-      <FruitsText></FruitsText>
+      {/* <HooksTestUpgrade></HooksTestUpgrade> */}
+      {/* <FruitsText></FruitsText> */}
+      <KformTest></KformTest>
+      <YFormTest></YFormTest>
+      {/* <YYY></YYY> */}
+{console.log(a)
+}
     </div>
   );
 }
