@@ -14,8 +14,9 @@ import { createPortal } from "react-dom";
 // import YFormTest from "./components/YFormTest";
 // import YYY from "./components/HocTest.decorator";
 // import a from "./components/Ytest";
-import Dialog, { Dialog2 } from "./components/Dialog";
-import Tree from "./components/Tree";
+// import Dialog, { Dialog2 } from "./components/Dialog";
+// import Tree from "./components/Tree";
+import ReduxTest from './components/ReduxTest'
 function App() {
   let d = "8";
   return (
@@ -40,7 +41,8 @@ function App() {
       {/* <YYY></YYY> */}
       {/* <Dialog>999</Dialog> */}
       {/* <Dialog2>666</Dialog2> */}
-      <Tree></Tree>
+      {/* <Tree></Tree> */}
+      <ReduxTest></ReduxTest>
     </div>
   );
 }
