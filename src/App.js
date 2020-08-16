@@ -11,12 +11,12 @@ import { createPortal } from "react-dom";
 // import HooksTestUpgrade from "./components/HooksTest_upgrade"
 // import FruitsText from './components/FruitsText'
 // import KformTest from "./components/KformTest";
-// import YFormTest from "./components/YFormTest";
+import YFormTest from "./components/YFormTest";
 // import YYY from "./components/HocTest.decorator";
 // import a from "./components/Ytest";
 // import Dialog, { Dialog2 } from "./components/Dialog";
 // import Tree from "./components/Tree";
-import ReduxTest from './components/ReduxTest'
+// import ReduxTest from './components/ReduxTest'
 function App() {
   let d = "8";
   return (
@@ -37,12 +37,12 @@ function App() {
       {/* <HooksTestUpgrade></HooksTestUpgrade> */}
       {/* <FruitsText></FruitsText> */}
       {/* <KformTest></KformTest> */}
-      {/* <YFormTest></YFormTest> */}
+      <YFormTest></YFormTest>
       {/* <YYY></YYY> */}
       {/* <Dialog>999</Dialog> */}
       {/* <Dialog2>666</Dialog2> */}
       {/* <Tree></Tree> */}
-      <ReduxTest></ReduxTest>
+      {/* <ReduxTest></ReduxTest> */}
     </div>
   );
 }

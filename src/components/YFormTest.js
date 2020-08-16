@@ -1,40 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
+import { Input, Button } from "antd";
 
-//
-function YFormCreate(Comp) {
-  return class extends React.Component {
+/**
+ * @description 这个文件主要封装了一个简单的Form表单，并加以引用
+ * @description 如果将表单单独提出来一个文件的话，可以将validateFields等方法挂载在Form上，更方便引用
+ */
+
+function KFormCreated(Comp) {
+  return class extends Component {
     constructor(props) {
       super(props);
-      this.options = {};
       this.state = {};
+      this.options = {};
     }
-    validField = (name) => {
-      const { rules } = this.options[name];
-      console.log(this.options, rules, name, this.options[name]);
-      let ret = rules.some((i) => {
-        if (i.required && !this.state[name]) {
-          this.setState({ [name + "Message"]: i.message });
-          return false;
-        }
-        this.setState({ [name + "Message"]: "" });
-        return true;
-      });
-      return ret;
-    };
-    validFields = () => {};
-    onChange = (e) => {
+    handleChange = (e) => {
+      e.persist();
       const { name, value } = e.target;
-      this.setState(
-        {
-          [name]: value,
-        },
-        () => this.validField(name)
-      );
+      this.setState({ [name]: value }, () => this.validateField(name));
     };
-    //包装
+    /**
+     * @description 包装表filed
+     * @param {String} field label name
+     * @param {Object} option include "rules" and more.
+     */
     getFieldDec = (field, option) => {
-      console.log("--", option);
-
       this.options[field] = option;
       return (InputComp) => {
         return (
@@ -42,37 +31,108 @@ function YFormCreate(Comp) {
             {React.cloneElement(InputComp, {
               name: field,
               value: this.state[field] || "",
-              onChange: this.onChange,
+              onChange: this.handleChange,
             })}
-            {<p>{this.state[field + "Message"]}</p>}
+            {/* 校验信息 */}
+            {this.state[field + "Message"] && (
+              <p style={{ color: "red" }}>{this.state[field + "Message"]}</p>
+            )}
           </div>
         );
       };
     };
+    validateField = (field) => {
+      const { rules } = this.options[field];
+      const ret = !rules.some((rule) => {
+        if (rule.required) {
+          if (!this.state[field]) {
+            this.setState({ [field + "Message"]: rule.message });
+            return true;
+          }
+        }
+        return false;
+      });
+      if (ret) {
+        this.setState({ [field + "Message"]: "" });
+      }
+      return ret;
+    };
+    validateFields = (callback) => {
+      const rets = Object.keys(this.options).map((item) => {
+        return this.validateField(item);
+      });
+      const ret = rets.every((v) => v);
+      callback(ret, this.state);
+    };
+
     render() {
       return (
-        <div>
-          <Comp {...this.props} validField={this.validField} getFieldDec={this.getFieldDec}></Comp>
+        <div className={"KFormCreated"}>
+          <Comp
+            {...this.props}
+            getFieldDec={this.getFieldDec}
+            validateFields={this.validateFields}
+          ></Comp>
         </div>
       );
     }
   };
 }
-@YFormCreate
-class YformTest extends React.Component {
-  confirm = () => {
-    console.log("confirm");
-  };
+
+/**
+ * @description form表单可以提供以下函数：
+ * @description validateFields(), getFieldDec()
+ */
+
+@KFormCreated
+class Form extends Component {
   render() {
-    const { getFieldDec } = this.props;
+    const { getFieldDec, colums } = this.props;
+
     return (
       <div>
-        {getFieldDec("user", { rules: [{ required: true, message: "please input" }] })(
-          <input></input>
-        )}
-        <button onClick={this.confirm}>confirm</button>
+        {colums.map((item, index) => {
+          return (
+            <div className={"Form"}>
+              {getFieldDec(item.field, { rules: item.rules })(
+                <Input type={item.renderType} key={index}></Input>
+              )}
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
-export default YformTest;
+
+export default class KFormTest extends Component {
+  culoums = [
+    {
+      field: "username",
+      rules: [{ required: true, message: "Please enter username." }],
+      renderType: "text",
+    },
+    {
+      field: "password",
+      rules: [{ required: true, message: "Please enter password." }],
+      renderType: "password",
+    },
+  ];
+  onSubmit = () => {
+    this.refs.form.validateFields((ret) => {
+      if (ret) {
+        console.log("success");
+      } else {
+        console.log("error");
+      }
+    });
+  };
+  render() {
+    return (
+      <div className={"KFormTest"}>
+        <Form ref="form" colums={this.culoums}></Form>
+        <Button onClick={this.onSubmit}>Submit</Button>
+      </div>
+    );
+  }
+}
