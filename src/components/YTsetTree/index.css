@@ -22,3 +22,7 @@
   padding: 0 3px;
   outline: none;
 }
+
+.searchVal-class {
+  color: rgb(245, 60, 50);
+}
