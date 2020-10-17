@@ -12,12 +12,12 @@ import React from "react";
 // import FruitsText from './components/FruitsText'
 // import KformTest from "./components/KformTest";
 // import YFormTest from "./components/YFormTest";
-import HH from "./components/YTsetTree/HH.js";
+// import HH from "./components/YTsetTree/HH.js";
 // import YYY from "./components/HocTest.decorator";
 // import Ytest from "./components/Ytest";
 // import Dialog, { Dialog2 } from "./components/Dialog";
 // import Tree from "./components/Tree";
-// import ReduxTest from './components/ReduxTest'
+import ReduxTest from "./components/ReduxTest";
 function App() {
   return (
     <div className="App">
@@ -42,9 +42,9 @@ function App() {
       {/* <Dialog>999</Dialog> */}
       {/* <Dialog2>666</Dialog2> */}
       {/* <Tree></Tree> */}
-      {/* <ReduxTest></ReduxTest> */}
+      <ReduxTest></ReduxTest>
       {/* <Ytest></Ytest> */}
-      <HH></HH>
+      {/* <HH></HH> */}
     </div>
   );
 }
