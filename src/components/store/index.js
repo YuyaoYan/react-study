@@ -1,16 +1,7 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import logger from "redux-logger";
+import thunk from "redux-thunk"; //解决异步问题
+import {counterReducer} from "./counter"
 
-const counterReducer = function (state = 0, action) {
-  const num = typeof action.payload == "number" ? action.payload : 1;
-  switch (action.type) {
-    case "add":
-      return state + num;
-    case "minus":
-      return state - num;
-    default:
-      return state; //默认相当于初始化
-  }
-};
-
-const store = createStore(counterReducer);
+const store = createStore(counterReducer, applyMiddleware(logger, thunk));
 export default store;
