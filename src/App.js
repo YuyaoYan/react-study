@@ -17,7 +17,8 @@ import React from "react";
 // import Ytest from "./components/Ytest";
 // import Dialog, { Dialog2 } from "./components/Dialog";
 // import Tree from "./components/Tree";
-import ReduxTest from "./components/ReduxTest";
+// import ReduxTest from "./components/ReduxTest";
+import MyReduxTest from './components/MyReduxTest'
 function App() {
   return (
     <div className="App">
@@ -42,7 +43,8 @@ function App() {
       {/* <Dialog>999</Dialog> */}
       {/* <Dialog2>666</Dialog2> */}
       {/* <Tree></Tree> */}
-      <ReduxTest></ReduxTest>
+      {/* <ReduxTest></ReduxTest> */}
+      <MyReduxTest></MyReduxTest>
       {/* <Ytest></Ytest> */}
       {/* <HH></HH> */}
     </div>
