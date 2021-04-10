@@ -12,11 +12,10 @@ import React from "react";
 // import FruitsText from './components/FruitsText'
 // import KformTest from "./components/KformTest";
 // import YFormTest from "./components/YFormTest";
-// import HH from "./components/YTsetTree/HH.js";
+import HH from "./components/YTsetTree/HH.js";  //树组件 - 纯手写
 // import YYY from "./components/HocTest.decorator";
 // import Ytest from "./components/Ytest";
 // import Dialog, { Dialog2 } from "./components/Dialog";
-// import Tree from "./components/Tree";
 // import ReduxTest from "./components/ReduxTest";
 import MyReduxTest from './components/MyReduxTest'
 function App() {
@@ -42,11 +41,10 @@ function App() {
       {/* <YYY></YYY> */}
       {/* <Dialog>999</Dialog> */}
       {/* <Dialog2>666</Dialog2> */}
-      {/* <Tree></Tree> */}
       {/* <ReduxTest></ReduxTest> */}
-      <MyReduxTest></MyReduxTest>
+      {/* <MyReduxTest></MyReduxTest> */}
       {/* <Ytest></Ytest> */}
-      {/* <HH></HH> */}
+      <HH></HH>
     </div>
   );
 }

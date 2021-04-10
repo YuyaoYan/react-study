@@ -10,7 +10,7 @@
     "clone-deep": "^4.0.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-redux": "^7.0.3",
+    "react-redux": "^7.0.2",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
